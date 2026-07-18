@@ -354,6 +354,23 @@ img {
   border-radius: 6px;
 }
 
+.song-embed {
+  max-width: 660px;
+}
+
+.song-caption {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin: 0 0 10px;
+}
+
+.song-embed iframe {
+  border: 0;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
 /* Footer */
 .site-footer {
   padding: 40px 0;
