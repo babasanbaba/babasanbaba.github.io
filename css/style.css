@@ -62,9 +62,29 @@ img {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-weight: 700;
   font-size: 1.05rem;
   letter-spacing: 0.02em;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  margin-bottom: 24px;
 }
 
 .nav-links {
