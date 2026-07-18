@@ -9,7 +9,63 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   initSongOfTheDay();
+  renderBlogScroll();
+  renderBlogList();
 });
+
+function sortedPosts() {
+  if (typeof BLOG_POSTS === "undefined") return [];
+  return [...BLOG_POSTS].sort((a, b) => new Date(b.date) - new Date(a.date));
+}
+
+function formatDateDots(dateStr) {
+  return dateStr.replaceAll("-", ".");
+}
+
+function renderBlogScroll() {
+  const container = document.getElementById("blog-scroll");
+  if (!container) return;
+
+  const posts = sortedPosts().slice(0, 5);
+  posts.forEach((post) => {
+    const item = document.createElement("a");
+    item.className = "blog-scroll-item";
+    item.href = post.url;
+    item.target = "_blank";
+    item.rel = "noopener";
+
+    item.innerHTML = `
+      <div class="blog-scroll-thumb"><img src="${post.thumb}" alt=""></div>
+      <p class="blog-scroll-date">${formatDateDots(post.date)}</p>
+      <p class="blog-scroll-title">${post.title}</p>
+    `;
+    container.appendChild(item);
+  });
+}
+
+function renderBlogList() {
+  const container = document.getElementById("post-list");
+  if (!container) return;
+
+  const posts = sortedPosts();
+  posts.forEach((post) => {
+    const item = document.createElement("a");
+    item.className = "post-item";
+    item.href = post.url;
+    item.target = "_blank";
+    item.rel = "noopener";
+
+    item.innerHTML = `
+      <div class="post-thumb"><img src="${post.thumb}" alt=""></div>
+      <div class="post-content">
+        <p class="post-date">${formatDateDots(post.date)}</p>
+        <h3>${post.title}</h3>
+        <span class="post-source">noteで読む</span>
+      </div>
+    `;
+    container.appendChild(item);
+  });
+}
 
 function initSongOfTheDay() {
   const container = document.getElementById("song-of-the-day");

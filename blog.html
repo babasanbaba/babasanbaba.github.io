@@ -38,44 +38,11 @@
 
       <!--
         note記事の追加方法:
-        1. note.comの記事ページを開く
-        2. 記事のURLをコピーする（例: https://note.com/your_id/n/xxxxxxxxxxxx）
-        3. 下の post-item をコピーして増やし、href と本文を差し替える
-        4. サムネイル画像を使いたい場合は post-thumb の中に <img src="..."> を追加する
-
-        note公式の埋め込み（記事本文をそのまま表示）を使いたい場合は、
-        note記事の「共有」→「埋め込み」からコードを取得し、
-        <div class="note-embed-wrap"> の中に貼り付けてください。
+        js/posts.js の BLOG_POSTS に1件追加するだけでOK。
+        このページとトップページの新着ブログ欄、両方に自動で反映されます。
       -->
 
-      <div class="post-list">
-
-        <a class="post-item" href="https://note.com/babasanban/n/n539d4e9d6f42" target="_blank" rel="noopener">
-          <div class="post-thumb"><img src="https://assets.st-note.com/production/uploads/images/255484271/rectangle_large_type_2_da117e3b2fab389008bc8468d8bcd06c.png?fit=bounds&quality=85&width=1280" alt=""></div>
-          <div class="post-content">
-            <p class="post-date">2026.03.01</p>
-            <h3>仮想環境を使って古いゲームを安定してプレイしよう</h3>
-            <span class="post-source">noteで読む</span>
-          </div>
-        </a>
-
-        <a class="post-item" href="https://note.com/babasanban/n/n5dd263d4357a" target="_blank" rel="noopener">
-          <div class="post-thumb"><img src="https://assets.st-note.com/production/uploads/images/236853178/rectangle_large_type_2_01c756089edc39520f109a4f0036ff5a.png?fit=bounds&quality=85&width=1280" alt=""></div>
-          <div class="post-content">
-            <p class="post-date">2025.12.19</p>
-            <h3>大学からのノベルゲー初心者レポ～しんどゲー編～</h3>
-            <span class="post-source">noteで読む</span>
-          </div>
-        </a>
-
-      </div>
-
-      <!-- note公式埋め込みを使う場合のサンプル（コメントを外して使用）
-      <div class="note-embed-wrap">
-        <iframe class="note-embed" src="https://note.com/embed/notes/xxxxxxxxxxxx" style="height:143px;" scrolling="no" frameborder="0"></iframe>
-        <script src="https://note.com/scripts/embed.js" charset="utf-8" async></script>
-      </div>
-      -->
+      <div class="post-list" id="post-list"></div>
 
     </div>
   </section>
@@ -92,6 +59,7 @@
     </div>
   </footer>
 
+  <script src="js/posts.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
