@@ -67,14 +67,12 @@ function renderBlogList() {
   });
 }
 
-function initSongOfTheDay() {
-  const container = document.getElementById("song-of-the-day");
-  if (!container || typeof SONGS_OF_THE_DAY === "undefined" || SONGS_OF_THE_DAY.length === 0) {
-    return;
-  }
+let currentSongIndex = null;
 
-  const dayCount = Math.floor(Date.now() / 86400000);
-  const song = SONGS_OF_THE_DAY[dayCount % SONGS_OF_THE_DAY.length];
+function renderSong(container, index) {
+  currentSongIndex = index;
+  const song = SONGS_OF_THE_DAY[index];
+  container.innerHTML = "";
 
   const caption = document.createElement("p");
   caption.className = "song-caption";
@@ -92,4 +90,26 @@ function initSongOfTheDay() {
     "allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
   );
   container.appendChild(iframe);
+}
+
+function initSongOfTheDay() {
+  const container = document.getElementById("song-of-the-day");
+  if (!container || typeof SONGS_OF_THE_DAY === "undefined" || SONGS_OF_THE_DAY.length === 0) {
+    return;
+  }
+
+  const dayCount = Math.floor(Date.now() / 86400000);
+  renderSong(container, dayCount % SONGS_OF_THE_DAY.length);
+
+  const rerollButton = document.getElementById("song-reroll");
+  if (rerollButton) {
+    rerollButton.addEventListener("click", () => {
+      if (SONGS_OF_THE_DAY.length <= 1) return;
+      let nextIndex;
+      do {
+        nextIndex = Math.floor(Math.random() * SONGS_OF_THE_DAY.length);
+      } while (nextIndex === currentSongIndex);
+      renderSong(container, nextIndex);
+    });
+  }
 }
