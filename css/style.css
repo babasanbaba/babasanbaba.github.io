@@ -419,6 +419,24 @@ img {
   border-radius: 10px;
 }
 
+.song-reroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 6px 4px;
+  border: none;
+  background: none;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.song-reroll:hover {
+  color: var(--color-text);
+}
+
 /* Footer */
 .site-footer {
   padding: 40px 0;
